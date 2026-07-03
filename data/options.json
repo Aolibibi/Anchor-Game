@@ -1,0 +1,13 @@
+{
+  "node_1": [
+    {"id": "option_1", "text": "待填", "type": "serious", "weight": 1.0, "keywords": []},
+    {"id": "option_2", "text": "待填", "type": "serious", "weight": 1.0, "keywords": []},
+    {"id": "option_3", "text": "待填", "type": "serious", "weight": 1.0, "keywords": []},
+    {"id": "option_4", "text": "待填", "type": "chaotic", "weight": 0.8, "keywords": []},
+    {"id": "option_5", "text": "待填", "type": "chaotic", "weight": 0.8, "keywords": []}
+  ],
+  "node_2": [],
+  "node_3": [],
+  "node_4": [],
+  "node_5": []
+}

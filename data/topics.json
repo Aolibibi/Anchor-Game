@@ -1,0 +1,18 @@
+{
+  "topics": [
+    {
+      "id": "lack_weapon",
+      "text": "勇者是不是太缺乏武器了",
+      "unlock_condition": "initial",
+      "trigger_node": 1,
+      "base_probability": 0.3
+    },
+    {
+      "id": "hungry",
+      "text": "勇者好像饿了",
+      "unlock_condition": "node_1_completed",
+      "trigger_node": null,
+      "base_probability": 0.3
+    }
+  ]
+}

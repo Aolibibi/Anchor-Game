@@ -1,0 +1,16 @@
+{
+  "combos": [
+    {
+      "id": "chicken_big",
+      "keywords": ["鸡", "大"],
+      "result": "鸡变大，可作载具",
+      "effect": {"type": "mount", "value": "chicken"}
+    },
+    {
+      "id": "chicken_fly",
+      "keywords": ["鸡", "飞"],
+      "result": "鸡飞天，触发空中视角",
+      "effect": {"type": "view_change", "value": "sky"}
+    }
+  ]
+}

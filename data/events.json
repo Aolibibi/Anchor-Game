@@ -1,0 +1,22 @@
+{
+  "forum_events": [
+    {
+      "id": "flame_war",
+      "name": "网友骂战",
+      "trigger_condition": {"type": "qi_ren", "value": 50},
+      "trigger_probability": 0.5,
+      "duration": 30,
+      "effects": ["bullet_screen_obscure"],
+      "leads_to_node": null
+    },
+    {
+      "id": "add_more",
+      "name": "加更事件",
+      "trigger_condition": {"type": "ren_qi", "value": 50},
+      "trigger_probability": 0.3,
+      "duration": 30,
+      "effects": ["gift_item"],
+      "leads_to_node": 1
+    }
+  ]
+}
