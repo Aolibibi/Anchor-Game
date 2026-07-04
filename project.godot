@@ -20,7 +20,6 @@ config/icon="res://icon.svg"
 EventBus="*res://core/EventBus.gd"
 GameManager="*res://core/GameManager.gd"
 ResourceManager="*res://core/ResourceManager.gd"
-ChaosPool="*res://core/ChaosPool.gd"
 
 [display]
 

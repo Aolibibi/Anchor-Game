@@ -80,42 +80,62 @@ script = ExtResource("2")
 [node name="HeaderContainer" type="Panel" parent="ForumPanel/ForumUI"]
 layout_mode = 1
 offset_right = 730.0
-offset_bottom = 50.0
+offset_bottom = 70.0
+
+[node name="ForumTag" type="Label" parent="ForumPanel/ForumUI/HeaderContainer"]
+layout_mode = 1
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 200.0
+offset_bottom = 26.0
+text = "[ 安科 ]"
+add_theme_color_overrides/font_color = Color(0.2, 0.5, 0.8, 1)
+add_theme_font_size_overrides/font_size = 12
 
 [node name="TitleLabel" type="Label" parent="ForumPanel/ForumUI/HeaderContainer"]
 layout_mode = 1
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 720.0
-offset_bottom = 40.0
+offset_left = 12.0
+offset_top = 28.0
+offset_right = 718.0
+offset_bottom = 60.0
 text = "【安科】加载中..."
-add_theme_color_overrides/font_color = Color(0.2, 0.2, 0.5, 1)
-add_theme_font_size_overrides/font_size = 16
+add_theme_color_overrides/font_color = Color(0.15, 0.15, 0.2, 1)
+add_theme_font_size_overrides/font_size = 15
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ForumPanel/ForumUI"]
 layout_mode = 1
-offset_top = 50.0
+offset_top = 70.0
 offset_right = 730.0
-offset_bottom = 720.0
+offset_bottom = 740.0
 horizontal_scroll_mode = 0
 
 [node name="PostsContainer" type="VBoxContainer" parent="ForumPanel/ForumUI/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 4
+theme_override_constants/separation = 0
 
 [node name="ActionPanel" type="Panel" parent="ForumPanel/ForumUI"]
 layout_mode = 1
-offset_top = 720.0
+offset_top = 740.0
 offset_right = 730.0
 offset_bottom = 1020.0
+
+[node name="WaitingLabel" type="Label" parent="ForumPanel/ForumUI/ActionPanel"]
+layout_mode = 1
+offset_left = 12.0
+offset_top = 6.0
+offset_right = 718.0
+offset_bottom = 26.0
+text = ""
+add_theme_color_overrides/font_color = Color(0.5, 0.5, 0.5, 1)
+add_theme_font_size_overrides/font_size = 12
 
 [node name="OptionsContainer" type="VBoxContainer" parent="ForumPanel/ForumUI/ActionPanel"]
 layout_mode = 1
 offset_left = 10.0
-offset_top = 10.0
+offset_top = 30.0
 offset_right = 720.0
-offset_bottom = 300.0
+offset_bottom = 280.0
 theme_override_constants/separation = 4
 
 [node name="GamePanel" type="Panel" parent="."]

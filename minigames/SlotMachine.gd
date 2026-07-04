@@ -88,15 +88,11 @@ func _check_result() -> void:
 	if s1 == s2 and s2 == s3:
 		result_label.text = "三连！大奖！[" + s1 + s2 + s3 + "]"
 		ResourceManager.add_ren_qi(20)
-		ChaosPool.add_keyword(s1)
-		ChaosPool.add_keyword(s1)
-		ChaosPool.add_keyword(s1)
 		end_game(true, 100, keywords)
 	elif s1 == s2 or s2 == s3 or s1 == s3:
 		result_label.text = "两连！小奖"
 		ResourceManager.add_ren_qi(8)
 		for s in [s1, s2, s3]:
-			ChaosPool.add_keyword(s)
 		end_game(true, 50, keywords)
 	else:
 		result_label.text = "没连上，再来！[" + s1 + s2 + s3 + "]"

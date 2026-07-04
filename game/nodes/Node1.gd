@@ -62,7 +62,6 @@ func _on_item_pressed(item_name: String) -> void:
 		hint_label.text = "槽位已满！"
 		return
 	_equipped.append(item_name)
-	ChaosPool.add_keyword(item_name)
 	var slot_idx: int = _equipped.size() - 1
 	var slot = slots_container.get_child(slot_idx)
 	var label = slot.get_child(0) as Label

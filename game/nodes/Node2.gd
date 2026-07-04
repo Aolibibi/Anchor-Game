@@ -70,7 +70,6 @@ func _on_rune_pressed(btn: Button, color_name: String) -> void:
 		_first_selected.disabled = true
 		btn.disabled = true
 		_connected_count += 1
-		ChaosPool.add_keyword(color_name)
 		_first_selected = null
 		_first_color = ""
 		_update_progress()

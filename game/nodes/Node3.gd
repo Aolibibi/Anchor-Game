@@ -62,16 +62,12 @@ func _try_combine(a: String, b: String) -> void:
 				_river_blocked = true
 				_chicken_moved = true
 				hint_label.text = "变大的小鸡堵住了河流！勇者可以过河了"
-				ChaosPool.add_keyword("堵河")
 				_complete_success()
 		"小鸡+石头", "石头+小鸡":
 			_chicken_big = true
 			hint_label.text = "小鸡吃了石头（？）变大了！"
-			ChaosPool.add_keyword("大")
-			ChaosPool.add_keyword("鸡")
 		"小鸡+树", "树+小鸡":
 			hint_label.text = "小鸡飞到了树上，没什么用"
-			ChaosPool.add_keyword("飞")
 		"树+河", "河+树":
 			hint_label.text = "树太重，勇者搬不动"
 		"石头+河", "河+石头":

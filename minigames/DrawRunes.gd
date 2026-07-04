@@ -57,7 +57,6 @@ func _on_rune_pressed(idx: int) -> void:
 			_runes[_first_selected].disabled = true
 			_runes[idx].disabled = true
 			_connected_count += 1
-			ChaosPool.add_keyword(["红","蓝","绿","黄"][c1] + "符文")
 			_update_progress()
 			hint_label.text = "连接成功！"
 			if _connected_count >= RUNE_PAIRS:

@@ -21,7 +21,6 @@ func start_game() -> void:
 	current_node_index = 1
 	ResourceManager.qi_ren = 0
 	ResourceManager.ren_qi = 0
-	ChaosPool.clear()
 
 func _on_node_entered(node_id: int) -> void:
 	current_node_index = node_id

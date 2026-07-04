@@ -9,6 +9,7 @@ extends Control
 @onready var game_scene_root: Node2D = $GamePanel/GameViewportContainer/GameViewport/GameSceneRoot
 
 func _ready() -> void:
+	_setup_backgrounds()
 	EventBus.qi_ren_changed.connect(_on_qi_ren_changed)
 	EventBus.ren_qi_changed.connect(_on_ren_qi_changed)
 	EventBus.scene_entered.connect(_on_scene_entered)
@@ -16,6 +17,36 @@ func _ready() -> void:
 	_update_resource_bars()
 	GameManager.start_game()
 	chapter_label.text = GameManager.get_progress_text()
+
+func _setup_backgrounds() -> void:
+	# 游戏场景背景
+	var game_style = StyleBoxTexture.new()
+	game_style.texture = load("res://assets/game_scenes/game_scene_pixel.png")
+	$GamePanel.add_theme_stylebox_override("panel", game_style)
+	
+	# 顶部状态栏背景
+	var topbar_style = StyleBoxTexture.new()
+	topbar_style.texture = load("res://assets/game_scenes/topbar_v2.png")
+	$TopBar.add_theme_stylebox_override("panel", topbar_style)
+	
+	# 论坛面板圆角白色背景
+	var forum_style = StyleBoxFlat.new()
+	forum_style.bg_color = Color(0.97, 0.97, 0.97)
+	forum_style.corner_radius_top_left = 12
+	forum_style.corner_radius_top_right = 12
+	forum_style.corner_radius_bottom_left = 12
+	forum_style.corner_radius_bottom_right = 12
+	forum_style.content_margin_left = 8
+	forum_style.content_margin_top = 8
+	forum_style.content_margin_right = 8
+	forum_style.content_margin_bottom = 8
+	$ForumPanel.add_theme_stylebox_override("panel", forum_style)
+	
+	# 让论坛面板子区域透明
+	var transparent = StyleBoxFlat.new()
+	transparent.bg_color = Color(0, 0, 0, 0)
+	$ForumPanel/ForumUI/HeaderContainer.add_theme_stylebox_override("panel", transparent)
+	$ForumPanel/ForumUI/ActionPanel.add_theme_stylebox_override("panel", transparent)
 
 func _update_resource_bars() -> void:
 	qi_ren_bar.value = ResourceManager.qi_ren

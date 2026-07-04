@@ -2,32 +2,57 @@
 
 [ext_resource type="Script" path="res://forum/PostItem.gd" id="1"]
 
-[node name="PostItem" type="PanelContainer"]
+[node name="PostItem" type="HBoxContainer"]
 custom_minimum_size = Vector2(700, 0)
 offset_right = 700.0
-offset_bottom = 60.0
+offset_bottom = 80.0
 script = ExtResource("1")
+theme_override_constants/separation = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Avatar" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
+expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="ContentVBox" type="Panel" parent="."]
+custom_minimum_size = Vector2(652, 64)
 layout_mode = 2
-theme_override_constants/separation = 4
+size_flags_horizontal = 3
 
-[node name="HeaderLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(690, 20)
+[node name="VBox" type="VBoxContainer" parent="ContentVBox"]
+layout_mode = 1
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 646.0
+offset_bottom = 60.0
+theme_override_constants/separation = 2
+
+[node name="FloorBar" type="HBoxContainer" parent="ContentVBox/VBox"]
 layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="FloorLabel" type="Label" parent="ContentVBox/VBox/FloorBar"]
+layout_mode = 2
+text = "1楼"
+add_theme_color_overrides/font_color = Color(0.55, 0.55, 0.55, 1)
+add_theme_font_size_overrides/font_size = 11
+
+[node name="NameLabel" type="RichTextLabel" parent="ContentVBox/VBox/FloorBar"]
+custom_minimum_size = Vector2(400, 18)
+layout_mode = 2
+size_flags_horizontal = 3
 bbcode_enabled = true
 fit_content = true
-text = "1F  [b]楼主[/b]"
+text = "[b]匿名[/b]"
 
-[node name="ContentLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(690, 0)
+[node name="TimeLabel" type="Label" parent="ContentVBox/VBox/FloorBar"]
+layout_mode = 2
+text = "00:00"
+add_theme_color_overrides/font_color = Color(0.6, 0.6, 0.6, 1)
+add_theme_font_size_overrides/font_size = 11
+
+[node name="ContentLabel" type="RichTextLabel" parent="ContentVBox/VBox"]
+custom_minimum_size = Vector2(630, 0)
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
