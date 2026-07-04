@@ -1,18 +1,21 @@
-# core/GameLoop.gd - 七步循环状态机
+# core/GameLoop.gd - 游戏循环辅助管理（时序由ForumUI驱动）
 extends Node
 
-enum Step {
-	ENTER_SCENE,       # ① 进入场景
-	OPTIONS_POOL,      # ② 楼主出选项池
-	PLAYER_ACTION,     # ③ 玩家行动
-	DICE_ROLL,         # ④ 投骰决定
-	EXECUTE,           # ⑤ 执行
-	COMPLETE,          # ⑥ 完成结算
-	CHECK_EVENTS       # ⑦ 判定特殊事件
-}
+var _loop_count: int = 0
+var _is_running: bool = false
 
-var _current_step: int = Step.ENTER_SCENE
-var _loop_count: int = 0  # 当前章节的循环次数
+func _ready() -> void:
+	EventBus.node_completed.connect(_on_node_completed)
 
-# TODO: 实现七步循环状态机
-# 每2-3个普通循环后强制进入下一个固定节点
+func start_game() -> void:
+	_is_running = true
+	_loop_count = 0
+
+func _on_node_completed(node_id: int, _outcome: String) -> void:
+	_loop_count += 1
+
+func get_loop_count() -> int:
+	return _loop_count
+
+func is_running() -> bool:
+	return _is_running

@@ -4,12 +4,24 @@ extends Node
 const MAX_POOL_SIZE: int = 8
 
 var _keywords: Array[String] = []
+var _combos: Array = []
+
+func _ready() -> void:
+	_load_combos()
+
+func _load_combos() -> void:
+	var file = FileAccess.open("res://data/chaos_combos.json", FileAccess.READ)
+	if file:
+		var data = JSON.parse_string(file.get_as_text())
+		if data and data.has("combos"):
+			_combos = data["combos"]
 
 func add_keyword(keyword: String) -> void:
 	if _keywords.size() >= MAX_POOL_SIZE:
-		_keywords.pop_front()  # FIFO淘汰
+		_keywords.pop_front()
 	_keywords.append(keyword)
 	EventBus.keyword_added.emit(keyword)
+	check_combos()
 
 func consume_keyword(keyword: String) -> bool:
 	if keyword in _keywords:
@@ -24,8 +36,19 @@ func get_keywords() -> Array[String]:
 func clear() -> void:
 	_keywords.clear()
 
-# TODO: 检查搭配表触发组合
 func check_combos() -> void:
-	# 从 res://data/chaos_combos.json 读取搭配表
-	# 检查当前关键词是否命中任何组合
-	pass
+	for combo in _combos:
+		if _has_all_keywords(combo["keywords"]):
+			EventBus.combo_triggered.emit(combo["id"], combo)
+			return
+
+func _has_all_keywords(required: Array) -> bool:
+	for kw in required:
+		if not (kw in _keywords):
+			return false
+	return true
+
+func get_keywords_text() -> String:
+	if _keywords.is_empty():
+		return "（空）"
+	return ", ".join(_keywords)
