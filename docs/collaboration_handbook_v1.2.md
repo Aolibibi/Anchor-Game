@@ -39,7 +39,6 @@ AnkakeProject/
 │   ├── EventBus.gd            # 信号总线（最先做）
 │   ├── GameManager.gd         # 游戏管理
 │   ├── ResourceManager.gd     # 资源条
-│   ├── ChaosPool.gd           # 混沌池
 │   └── GameLoop.gd            # 七步循环
 ├── forum/                     # 论坛层
 │   ├── ForumScene.tscn
@@ -70,7 +69,6 @@ AnkakeProject/
 │   ├── events.json
 │   ├── options.json
 │   ├── topics.json
-│   ├── chaos_combos.json
 │   └── dialogues.json
 ├── ui/                        # 通用UI
 │   ├── ResourceBar.tscn + ResourceBar.gd
@@ -166,11 +164,6 @@ signal node_completed(node_id: int, outcome: String)
 # === 论坛事件信号 ===
 signal forum_event_triggered(event_id: String)
 signal forum_event_ended(event_id: String)
-
-# === 混沌池信号 ===
-signal keyword_added(keyword: String)
-signal keyword_consumed(keyword: String)
-signal combo_triggered(combo_id: String, result: Dictionary)
 ```
 
 **注册为Autoload**：项目设置 → Autoload → 添加 `EventBus`，路径 `res://core/EventBus.gd`
@@ -583,7 +576,6 @@ grep -rL "class_name" --include="*.gd" core/ forum/ game/ minigames/
 | data/dialogues.json | 论坛楼层文案（网友吐槽/骰子娘旁白/楼主补刀） | 高 |
 | data/topics.json | 话题池（固定话题+解锁条件+引发节点） | 中 |
 | data/events.json | 论坛事件配置 | 中 |
-| data/chaos_combos.json | 混沌池搭配表 | 中 |
 
 ## 4.2 节点剧本填写模板
 
@@ -628,7 +620,6 @@ grep -rL "class_name" --include="*.gd" core/ forum/ game/ minigames/
 - `text`：选项显示文本
 - `type`：`serious`(正经) / `chaotic`(离谱) / `special`(骚选项)
 - `weight`：基础权重，气人/人气会调整
-- `keywords`：选中后进入混沌池的关键词
 
 ### data/dialogues.json
 ```json
@@ -671,26 +662,6 @@ grep -rL "class_name" --include="*.gd" core/ forum/ game/ minigames/
       "unlock_condition": "node_1_completed",
       "trigger_node": null,
       "base_probability": 0.3
-    }
-  ]
-}
-```
-
-### data/chaos_combos.json
-```json
-{
-  "combos": [
-    {
-      "id": "chicken_big",
-      "keywords": ["鸡", "大"],
-      "result": "鸡变大，可作载具",
-      "effect": {"type": "mount", "value": "chicken"}
-    },
-    {
-      "id": "chicken_fly",
-      "keywords": ["鸡", "飞"],
-      "result": "鸡飞天，触发空中视角",
-      "effect": {"type": "view_change", "value": "sky"}
     }
   ]
 }
@@ -746,14 +717,13 @@ grep -rL "class_name" --include="*.gd" core/ forum/ game/ minigames/
 2. data/options.json（每个节点的预设选项）
 3. data/dialogues.json（论坛文案）
 4. data/topics.json（话题池）
-5. data/chaos_combos.json（混沌池搭配表）
-6. data/events.json（论坛事件配置）
+5. data/events.json（论坛事件配置）
 
 ---
 
 ## 附：项目当前状态
 
-- ✅ 策划文档完成（game_design_v0.9.md）
+- ✅ 策划文档完成（game_design_v1.0.md）
 - ✅ 开发计划完成（dev_plan_v1.1.md）
 - ✅ Git仓库已配置（https://github.com/Aolibibi/Anchor-Game.git）
 - ⏳ 待填：5个节点剧本
